@@ -1,0 +1,43 @@
+﻿@model Car_Store.Models.ApplicationUser
+<h3 style="font-weight:bold;">  @Html.DisplayFor(model => model.UserName) Details</h3>
+<div style="font-weight:bold;">
+    <hr />
+    <dl class="row">
+        <!--UserId-->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Id)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Id)
+        </dd>
+        <!--UserId-->
+        <!--UserName-->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.UserName)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.UserName)
+        </dd>
+        <!--UserName-->
+        <!--User Email-->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.Email)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.Email)
+        </dd>
+        <!--UserEmail-->
+        <!--User PhoneNumber-->
+        <dt class="col-sm-2">
+            @Html.DisplayNameFor(model => model.PhoneNumber)
+        </dt>
+        <dd class="col-sm-10">
+            @Html.DisplayFor(model => model.PhoneNumber)
+        </dd>
+        <!--User PhoneNumber-->
+    </dl>
+    <form asp-action="Details">
+        <a asp-action="Index" class="btn btn-primary" style="background-color: #946b6b; border-color: #946b6b; font-family: 'Open Sans', sans-serif; text-decoration:unset;">Back to List</a>
+    </form>
+</div>
+    

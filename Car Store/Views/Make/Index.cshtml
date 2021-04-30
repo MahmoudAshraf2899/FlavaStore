@@ -1,0 +1,29 @@
+﻿@model IEnumerable<Car_Store.Models.Make>
+<p>
+    <a asp-action="Create" class="btn btn-warning" style="font-family: 'Open Sans', sans-serif;">Add new brand</a>
+</p>
+<table class="table table-hover">
+    <thead>
+        <tr style="font-family: 'Open Sans', sans-serif; font-weight:bold">
+            <th>
+                @Html.DisplayNameFor(model => model.Name)
+            </th>
+            <th class="text-right">Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model)
+        {
+            <tr style="font-family: 'Open Sans', sans-serif; font-weight:bold;">
+                <td>
+                    @Html.DisplayFor(modelItem => item.Name)
+                </td>
+                <td class="text-right">
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"></i></a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+

@@ -1,0 +1,65 @@
+﻿@model cloudscribe.Pagination.Models.PagedResult<Bike>
+@{
+    Layout = "_Layout";
+}
+<p>
+    <a asp-action="Create" class="btn btn-warning" style="margin-bottom:15px; font-family: 'Open Sans', sans-serif; font-weight:bold;">Add New Vehicle</a>
+</p>
+<table class="table table-sm" style="background-color:#FFF;">
+    <thead>
+        <tr style="font-family: 'Open Sans', sans-serif;">
+            <th scope="col">Car Photo</th>
+            <th scope="col">Car Details</th>
+            <th scope="col"><a asp-action="Index" asp-route-sortOrder="@ViewBag.PriceSortParam" asp-route-pageNumber="@Model.PageNumber" style="text-decoration:unset;">Price</a></th>
+            <th scope="col">Seller Information</th>
+            @if (User.IsInRole("Admin"))
+            {
+                <th>Actions</th>
+            }
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var item in Model.Data)
+        {
+        <tr style="font-family: 'Open Sans', sans-serif; font-weight:700;">
+            <!--Bike Photo-->
+            <td><img src="@Html.DisplayFor(m => item.ImagePath)" class="rounded" style="width:235px; height:181px;" /></td>
+            <td>
+                <!--BikeName and Price-->
+                <b >@Html.DisplayFor(m => item.Make.Name) (@Html.DisplayFor(m => item.Year))</b> <br />
+                <b><strong>Model:</strong> </b>@Html.DisplayFor(m => item.Model.Name)<br />
+                <b><strong>Milleage:</strong> </b>@Html.DisplayFor(m => item.Mileage)<br />
+                <b><strong>Features:</strong><br /> </b>@Html.DisplayFor(m => item.Features)
+            </td>
+            <td>@Html.DisplayFor(m => item.Price) @Html.DisplayFor(m => item.Currency)</td>
+            <td>
+                <b><strong>Name:</strong> </b> @Html.DisplayFor(m => item.SellerName)<br />
+                <b><strong>Email:</strong> </b>@Html.DisplayFor(m => item.SellerEmail)<br />
+                <b><strong>Phone:</strong> </b>@Html.DisplayFor(m => item.SellerPhone)
+            </td>
+            @if (User.IsInRole("Admin"))
+            {
+                <td>
+                    <a asp-action="Edit" asp-route-id="@item.Id"><i class="fas fa-edit"></i></a> |
+                    <a asp-action="Delete" asp-route-id="@item.Id"><i class="fas fa-trash"></i></a>
+                </td>
+            }
+        </tr>
+        }
+    </tbody>
+</table>
+<cs-pager cs-paging-pagenumber=(int)Model.PageNumber
+          cs-paging-totalitems=(int)Model.TotalItems
+          cs-paging-pagesize=Model.PageSize
+          cs-pagenumber-param="pagenumber"
+          asp-route-sortOrder="@ViewBag.CurrentSortOrder"
+          asp-route-searchEngine="@ViewBag.CurrentSearch"
+          asp-controller="Bike"
+          asp-action="Index"
+          cs-pager-li-current-class="page-item active"
+          cs-pager-li-other-class="page-item"
+          cs-pager-li-non-active-class="page-item disabled"
+          cs-pager-link-current-class="page-link"
+          cs-pager-link-other-class="page-link">
+
+</cs-pager>

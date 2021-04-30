@@ -1,0 +1,29 @@
+﻿@model Car_Store.Models.ViewModels.BikeViewModel
+
+    <div style="margin-top:20px;">
+        <h3 style="font-family: 'Open Sans', sans-serif;">Are you sure you want to delete this vechile?</h3>
+        <div>
+            <hr />
+            <dl class="row">
+                <!--Make-->
+                <dt class="col-sm-2" style="font-family: 'Open Sans', sans-serif;">
+                    @Html.DisplayNameFor(model => model.Bike.Make.Name)
+                </dt>
+                <dd class="col-sm-10" style="font-family: 'Open Sans', sans-serif;">
+                    @Html.DisplayFor(model => model.Bike.Make.Name)
+                </dd>
+                <!--Model-->
+                <dt class="col-sm-2" style="font-family: 'Open Sans', sans-serif;">
+                    @Html.DisplayNameFor(model => model.Bike.Model.Name)
+                </dt>
+                <dd class="col-sm-10" style="font-family: 'Open Sans', sans-serif;">
+                    @Html.DisplayFor(model => model.Bike.Model.Name)
+                </dd>
+            </dl>
+
+            <form asp-action="Delete">
+                <input type="submit" value="Delete" class="btn btn-danger" style="font-family: 'Open Sans', sans-serif;" />
+                <a asp-action="Index" class="btn btn-success" style="font-family: 'Open Sans', sans-serif;">Back to list</a>
+            </form>
+        </div>
+    </div>
